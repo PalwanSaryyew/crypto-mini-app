@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @unique // Telegram User ID'si olarak kullanacağız
+  phoneNumber   String?         @unique
+  firstName     String?
+  lastName      String?
+  username      String?
+  languageCode  String?
+  isPremium     Boolean?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  CryptoBalance CryptoBalance[]
+}
+
+model CryptoBalance {
+  assetId   String
+  userId    String
+  balance   Decimal  @db.Decimal(18, 8) // Yüksek hassasiyet için Decimal tipi kullanıyoruz. 18 basamak toplam, 8 basamak ondalık kısmı için.
+  asset     Asset    @relation(fields: [assetId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade) // onDelete: Cascade -> Kullanıcı silinirse, bakiyeleri de silinir.
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@id([assetId, userId]) // assetId ve userId kombinasyonu birincil anahtar olacak
+}
+
+model Asset {
+  id            String          @id @unique // Kripto paranın sembolü, örn: "BTC", "ETH", "USDT"
+  name          String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  CryptoBalance CryptoBalance[]
+}

@@ -1,0 +1,31 @@
+{
+   "success": true,
+   "message": "The order was created successfully.",
+   "order": {
+      "symbol": "TONUSDT",
+      "orderId": 995781,
+      "orderListId": -1,
+      "clientOrderId": "x-HNA2TXFJeb1d226177ac417b949261",
+      "transactTime": 1750690726407,
+      "price": "0.00000000",
+      "origQty": "35.54000000",
+      "executedQty": "35.54000000",
+      "origQuoteOrderQty": "100.00000000",
+      "cummulativeQuoteQty": "99.97402000",
+      "status": "FILLED",
+      "timeInForce": "GTC",
+      "type": "MARKET",
+      "side": "BUY",
+      "workingTime": 1750690726407,
+      "fills": [
+         {
+            "price": "2.81300000",
+            "qty": "35.54000000",
+            "commission": "0.00000000",
+            "commissionAsset": "TON",
+            "tradeId": 54324
+         }
+      ],
+      "selfTradePreventionMode": "EXPIRE_MAKER"
+   }
+}
