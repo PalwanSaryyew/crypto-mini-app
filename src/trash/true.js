@@ -1,4 +1,4 @@
-const quoto = {
+export const quoto = {
    symbol: "TONUSDT",
    orderId: 995889,
    orderListId: -1,
@@ -25,7 +25,7 @@ const quoto = {
    ],
    selfTradePreventionMode: "EXPIRE_MAKER",
 };
-const fa = {
+export const fa = {
    symbol: "TONUSDT",
    orderId: 995986,
    orderListId: -1,

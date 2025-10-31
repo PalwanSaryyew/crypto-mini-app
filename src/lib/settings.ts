@@ -21,3 +21,5 @@ export const myBinance = new Binance().options({
    APISECRET: MYSECRET_KEY,
    recvWindow: 50000,
 });
+
+export const authTokenName = 'watasiwa_token';
